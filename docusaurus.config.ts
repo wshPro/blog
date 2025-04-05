@@ -13,7 +13,7 @@ const config: Config = {
   url: 'https://your-docusaurus-site.example.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/Blog/',
+  baseUrl: '/blog/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -43,7 +43,9 @@ const config: Config = {
           //   'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/'
         },
         blog: {
+          path: 'blogs',
           showReadingTime: true,
+          routeBasePath: 'blogs',
           feedOptions: {
             type: ['rss', 'atom'],
             xslt: true
@@ -80,7 +82,7 @@ const config: Config = {
           position: 'left',
           label: 'docs'
         },
-        { to: '/blog', label: 'blogs', position: 'left' }
+        { to: '/blogs', label: 'blogs', position: 'left' }
         // {
         //   href: 'https://github.com/facebook/docusaurus',
         //   label: 'GitHub',
@@ -122,7 +124,7 @@ const config: Config = {
           items: [
             {
               label: 'Blog',
-              to: '/blog'
+              to: '/blogs'
             },
             {
               label: 'GitHub',
