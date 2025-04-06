@@ -88,7 +88,7 @@ p1.x = 5; // error!
 
 ## type 和 interface 如何选择
 
-type: 适用于定义复杂的类型，如联合类型，交叉类型，元组类型
+type: 适用于定义复杂的类型，如联合类型，交叉类型，元组类型  
 interface:在定义对象结构，类的契约是使用较多，尤其是需要声明合并的场景
 
 ## 高级类型
@@ -146,6 +146,29 @@ const profile: ProfileStruct = {
   name: 'jian',
   age: 18
 }
+
+// test
+type Struct1 = {
+  primitiveProp: string,
+  objectProp: {
+    name: string
+  }
+}
+
+type Struct2 = {
+  primitiveProp: number,
+  objectProp: {
+    age: number
+  }
+}
+
+type Composed = Struct1 & Struct2
+
+type PrimitivePropType = Composed['primitiveProp'] // never
+type ObjectPropType = Composed['objectProp'] // { name: string; age: number; }
+
+type UnionIntersection1 = (1 | 2 | 3) & (1 | 2) // 1 | 2
+type UnionIntersection2 = (string | number | symbol) & string // string
 ```
 
 ### 索引类型
