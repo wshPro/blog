@@ -91,6 +91,41 @@ p1.x = 5; // error!
 type: 适用于定义复杂的类型，如联合类型，交叉类型，元组类型  
 interface:在定义对象结构，类的契约是使用较多，尤其是需要声明合并的场景
 
+- 可以互相替换的情况
+  用于定义对象类型时
+  ```ts
+  interface Person {
+    name: string
+    age: number
+  }
+  type PersonType = {
+    name: string
+    age: number
+  }
+  ```
+- 不能用 type 代替 interface 的情况
+  接口继承：interface 可以通过 extends 关键字继承多个接口，实现接口的组合。而 type 只能通过交叉类型&来实现类似功能，但语法和使用场景有差异。
+  ```ts
+  interface Shape {
+    area: number
+  }
+  interface Colorful {
+    color: string
+  }
+  // 接口继承
+  interface ColoredShape extends Shape, Colorful {}
+  ```
+  声明合并。interface 支持声明合并，即可以多次定义同名接口，TypeScript 会将它们合并为一个接口。type 不支持声明合并
+  ```ts
+  interface User {
+    name: string
+  }
+  interface User {
+    age: number
+  }
+  // 合并后的User接口有name和age属性
+  ```
+
 ## 高级类型
 
 ### 字面量类型
